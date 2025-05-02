@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="num1" placeholder="First number">
+    <input type="number" id="num2" placeholder="Second number"><br><br>
+
+    <button onclick="calculate('+')">Add</button>
+    <button onclick="calculate('-')">Subtract</button>
+    <button onclick="calculate('*')">Multiply</button>
+    <button onclick="calculate('/')">Divide</button>
+
+    <p id="result">Result: </p>
+
+    <script>
+        function calculate(operator) {
+            // Get values from inputs
+            const n1 = parseFloat(document.getElementById("num1").value);
+            const n2 = parseFloat(document.getElementById("num2").value);
+            let result;
+
+            // Check if inputs are valid numbers
+            if (isNaN(n1) || isNaN(n2)) {
+                result = "Please enter both numbers.";
+            } else {
+                // Do the calculation based on operator
+                if (operator === '+') result = n1 + n2;
+                else if (operator === '-') result = n1 - n2;
+                else if (operator === '*') result = n1 * n2;
+                else if (operator === '/') {
+                    result = n2 === 0 ? "Cannot divide by zero." : n1 / n2;
+                }
+            }
+
+            // Show result
+            document.getElementById("result").textContent = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
